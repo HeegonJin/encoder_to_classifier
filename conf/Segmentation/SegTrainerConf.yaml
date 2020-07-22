@@ -1,0 +1,52 @@
+SegModel:
+  path:
+    model:
+      save: 'hgnet'
+
+  input:
+    width: 1920
+    height: 1088
+
+  output:
+    classes: 4
+    activation: 'sigmoid'
+
+  metrics: ['acc']
+  device: 'cpu'
+
+  optimizer:
+    class_name: 'Adam'
+    config:
+      lr: 0.00005
+      weight_decay: 0.0005
+
+SegTrainer:
+  name: 'hgnet'
+  
+  path:
+    data:
+      load:
+        train:
+          x: 'C:\Users\minds\Documents\heegon\skn_serving\result\data\x'
+          y: 'C:\Users\minds\Documents\heegon\skn_serving\result\data\y\Corner\A'
+        valid:
+          x: 'C:\Users\minds\Documents\heegon\skn_serving\result\data\x'
+          y: 'C:\Users\minds\Documents\heegon\skn_serving\result\data\y\Corner\A'
+
+  label:
+    - 'Corner'
+    - 'Glass_Top'
+    - 'Glass_Side'
+
+  batch_size: 1
+  epochs: 1
+
+  ext:
+    x: '.jpg'
+    y: '.png'
+
+  num_workers: 0
+  pin_memory: False
+
+
+
